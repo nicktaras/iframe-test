@@ -44,6 +44,7 @@
 
         // Send random message data on every button click
         bindEvent(messageButton, 'click', function (e) {
+            console.log('iframe button click');
             if(document.hasStorageAccess) {
         document.hasStorageAccess().then(hasAccess => {
         if (!hasAccess) {
