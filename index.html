@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>iframe Window</title>
@@ -10,6 +11,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <h1>Hello there, i'm an iframe</h1>
@@ -46,15 +48,16 @@
             var x = localStorage.getItem('test');
             x = JSON.parse(JSON.stringify(x));
             fetch('https://raw.githubusercontent.com/nicktaras/json_mocks/main/un.json?' + new URLSearchParams({
-                    foo: x
-              })
-              .then(res => res.json()
-              .then((json) => {
-                    sendMessage(JSON.stringify(json));
-              }).catch(function (error) {
-                    console.log('request failed', error)
-              });
+                foo: x
+            })
+            .then(res => res.json())
+            .then((json) => {
+                sendMessage(JSON.stringify(json));
+            }).catch(function (error) {
+                console.log('request failed', error)
+            }));
         });
     </script>
 </body>
+
 </html>
