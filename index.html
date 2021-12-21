@@ -48,9 +48,9 @@
             fetch('https://raw.githubusercontent.com/nicktaras/json_mocks/main/un.json?' + new URLSearchParams({
                     foo: x
               })
-              .then(data => data.text())
-              .then((text) => {
-                sendMessage(text));
+              .then(res => res.json()
+              .then((json) => {
+                    sendMessage(JSON.stringify(json));
               }).catch(function (error) {
                     console.log('request failed', error)
               });
