@@ -43,14 +43,24 @@
 
         // Send random message data on every button click
         bindEvent(messageButton, 'click', function (e) {
+                        
+            document.hasStorageAccess().then(hasAccess => {
+              if (!hasAccess) {
+                return document.requestStorageAccess();
+              }
+            }).then(_ => {
+
+                var t = localStorage.getItem("test");
             
-            var t = localStorage.getItem("test");
+                var out = 2; // access a localStorage entry
             
-            var out = 2; // access a localStorage entry
+                if(Number(t) > 1) out = 10;
             
-            if(Number(t) > 1) out = 10;
-            
-            sendMessage(out);
+                sendMessage(out);
+                
+            }).catch(_ => {
+              // error obtaining storage access.
+            });
             
         });
     </script>
