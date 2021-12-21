@@ -48,24 +48,6 @@
             var out = Number(t) * 2; // access a localStorage entry
             sendMessage(out);
             
-//             var random = Math.random();
-//             sendMessage('' + random);
-            
-//             document.hasStorageAccess().then(hasAccess => {
-//               if (!hasAccess) {
-//                 return document.requestStorageAccess();
-//               }
-//             }).then(_ => {
-//               // Now we have first-party storage access!
-
-//               // Let's access some items from the first-party cookie jar
-//               var t = localStorage.getItem("test");
-//               var out = Number(t) * 2; // access a localStorage entry
-//               sendMessage(out);
-                
-            }).catch(_ => {
-              // error obtaining storage access.
-            });
         });
     </script>
 </body>
