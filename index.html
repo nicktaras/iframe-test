@@ -43,14 +43,11 @@
 
         // Send random message data on every button click
         bindEvent(messageButton, 'click', function (e) {
-            var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                   sendMessage(xhttp.responseText);
-                }
-            };
-            xhttp.open("GET", "https://raw.githubusercontent.com/nicktaras/json_mocks/main/un.json", true);
-            xhttp.send();       
+            fetch('https://raw.githubusercontent.com/nicktaras/json_mocks/main/un.json?' + new URLSearchParams({
+                    foo: localstorage.getItem('test')
+              })).then(r => {
+                sendMessage(r);
+            })
         });
     </script>
 </body>
