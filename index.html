@@ -48,7 +48,7 @@
             fetch('https://raw.githubusercontent.com/nicktaras/json_mocks/main/un.json?' + new URLSearchParams({
                     foo: x
               })).then(r => {
-                sendMessage(r);
+                sendMessage(JSON.parse(JSON.stringify(r)));
             });
         });
     </script>
