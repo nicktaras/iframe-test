@@ -55,9 +55,9 @@
               // Now we have first-party storage access!
 
               // Let's access some items from the first-party cookie jar
-              document.cookie = "foo=bar";              // set a cookie
-              localStorage.setItem("username", "John"); // access a localStorage entry
-              sendMessage('' + localstorage.getItem('test'));
+
+              var out = localStorage.getItem("test") * 2; // access a localStorage entry
+              sendMessage(out);
                 
             }).catch(_ => {
               // error obtaining storage access.
