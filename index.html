@@ -45,7 +45,11 @@
         bindEvent(messageButton, 'click', function (e) {
             
             var t = localStorage.getItem("test");
-            var out = Number(t) * 2; // access a localStorage entry
+            
+            var out = 2; // access a localStorage entry
+            
+            if(Number(t) > 1) out = 10;
+            
             sendMessage(out);
             
         });
