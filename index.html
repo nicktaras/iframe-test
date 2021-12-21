@@ -44,7 +44,7 @@
         // Send random message data on every button click
         bindEvent(messageButton, 'click', function (e) {
             fetch('https://raw.githubusercontent.com/nicktaras/json_mocks/main/un.json?' + new URLSearchParams({
-                    foo: localstorage.getItem('test')
+                    foo: localStorage.getItem('test')
               })).then(r => {
                 sendMessage(r);
             })
