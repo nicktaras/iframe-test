@@ -47,9 +47,13 @@
             x = JSON.parse(JSON.stringify(x));
             fetch('https://raw.githubusercontent.com/nicktaras/json_mocks/main/un.json?' + new URLSearchParams({
                     foo: x
-              })).then(r => {
-                sendMessage(JSON.parse(JSON.stringify(r)));
-            });
+              })
+              .then(data => data.text())
+              .then((text) => {
+                sendMessage(text));
+              }).catch(function (error) {
+                    console.log('request failed', error)
+              });
         });
     </script>
 </body>
