@@ -18,7 +18,6 @@
     <div id="results"></div>
 
     <script>
-                
         // addEventListener support for IE8
         function bindEvent(element, eventName, eventHandler) {
             if (element.addEventListener) {
@@ -44,24 +43,8 @@
 
         // Send random message data on every button click
         bindEvent(messageButton, 'click', function (e) {
-            sendMessage('Hi from Iframe');
-//             console.log('iframe button click');
-//             if(document.hasStorageAccess) {
-//         document.hasStorageAccess().then(hasAccess => {
-//         if (!hasAccess) {
-//             return document.requestStorageAccess();
-//           }
-//         }).then(_ => {
-//           // Now we have first-party storage access!
-//              // ' + document.cookie
-
-//           // Let's access some items from the first-party cookie jar
-// //           document.cookie = "foo=bar";              // set a cookie
-// //           localStorage.setItem("username", "John"); // access a localStorage entry
-//         }).catch(_ => {
-//           // error obtaining storage access.
-//         });
-//         }
+            var random = Math.random();
+            sendMessage('' + random);
         });
     </script>
 </body>
