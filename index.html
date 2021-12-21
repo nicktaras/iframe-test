@@ -44,23 +44,24 @@
 
         // Send random message data on every button click
         bindEvent(messageButton, 'click', function (e) {
-            console.log('iframe button click');
-            if(document.hasStorageAccess) {
-        document.hasStorageAccess().then(hasAccess => {
-        if (!hasAccess) {
-            return document.requestStorageAccess();
-          }
-        }).then(_ => {
-          // Now we have first-party storage access!
-            sendMessage('Hi'); // ' + document.cookie
+            sendMessage('Hi from Iframe');
+//             console.log('iframe button click');
+//             if(document.hasStorageAccess) {
+//         document.hasStorageAccess().then(hasAccess => {
+//         if (!hasAccess) {
+//             return document.requestStorageAccess();
+//           }
+//         }).then(_ => {
+//           // Now we have first-party storage access!
+//              // ' + document.cookie
 
-          // Let's access some items from the first-party cookie jar
-//           document.cookie = "foo=bar";              // set a cookie
-//           localStorage.setItem("username", "John"); // access a localStorage entry
-        }).catch(_ => {
-          // error obtaining storage access.
-        });
-        }
+//           // Let's access some items from the first-party cookie jar
+// //           document.cookie = "foo=bar";              // set a cookie
+// //           localStorage.setItem("username", "John"); // access a localStorage entry
+//         }).catch(_ => {
+//           // error obtaining storage access.
+//         });
+//         }
         });
     </script>
 </body>
