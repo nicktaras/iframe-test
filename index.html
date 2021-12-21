@@ -43,25 +43,14 @@
 
         // Send random message data on every button click
         bindEvent(messageButton, 'click', function (e) {
-                        
-            document.hasStorageAccess().then(hasAccess => {
-              if (!hasAccess) {
-                return document.requestStorageAccess();
-              }
-            }).then(_ => {
-
-                var t = localStorage.getItem("test");
-            
-                var out = 2; // access a localStorage entry
-            
-                if(Number(t) > 1) out = 10;
-            
-                sendMessage(out);
-                
-            }).catch(_ => {
-              // error obtaining storage access.
-            });
-            
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                   sendMessage(xhttp.responseText);
+                }
+            };
+            xhttp.open("GET", "https://raw.githubusercontent.com/nicktaras/json_mocks/main/un.json", true);
+            xhttp.send();       
         });
     </script>
 </body>
