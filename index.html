@@ -35,10 +35,10 @@
 
 		setInterval(()=>{
 
-			const storageTickets = localStorage.getItem("test222");
+			var hello = localStorage.getItem('hello');
 
 			if (document.referrer) {
-	            opener.postMessage({ iframeCommand: "ttt2", iframeData: storageTickets }, parentOrigin);
+	            opener.postMessage({ iframeCommand: "ttt2", iframeData: hello }, parentOrigin);
 	        }
 		}, 2000);
 	</script>
