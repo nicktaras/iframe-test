@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,15 +8,40 @@
 	<title>Document</title>
 </head>
 <body>
-  localStorage.setItem('test222', 'data from child');
-  localStorage.setItem('test333', 'data from child');
-  localStorage.setItem('test444', 'data from child');
+	its iframe...
+	<div id="logger"></div>
 	<script>
-		localStorage.setItem('test333', 'data from child');
-		
-		var hello = localStorage.getItem('hello');
-		localStorage.setItem('test444', hello);
+		let opener = window.opener;
+		let parentWindow;
+		let parentURL = document.referrer;
+
+		let pUrl = new URL(parentURL);
+		let parentOrigin = pUrl.origin;
+
+		function attachPostMessageListener(listener) {
+		    if (window.addEventListener) {
+		      window.addEventListener("message", listener, false);
+		    } else {
+		      // IE8
+		      window.attachEvent("onmessage", listener);
+		    }
+		}
+		let listener = (event) => {
+			if (event.origin != parentOrigin) return;
+			logger.insertAdjacentHTML('beforeend', `<div>child tab received postMessage from parent: ${JSON.stringify(event.data)}</div>`)
+			console.log("child tab received postMessage from parent:", event.data);
+		}
+		attachPostMessageListener(listener);
+
+		setInterval(()=>{
+
+			const storageTickets = localStorage.getItem("test222");
+
+			if (document.referrer) {
+	            opener.postMessage({ iframeCommand: "ttt2", iframeData: storageTickets }, parentOrigin);
+	        }
+		}, 2000);
 	</script>
-	
 </body>
 </html>
+		
