@@ -15,7 +15,7 @@
 		let parentOrigin = pUrl.origin;
 		var tokens = localStorage.getItem('dcTokens');
 		function init() {
-			if (document.referrer) {
+			if (parentURL) {
 				opener.postMessage({ evt: "tokens", data: { issuer: 'devcon', tokens: tokens }  }, parentOrigin);
 			}	
 		}
