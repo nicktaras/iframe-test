@@ -35,10 +35,10 @@
 
 		setInterval(()=>{
 
-			var hello = localStorage.getItem('hello');
+			var hello = localStorage.getItem('dcTokens');
 
 			if (document.referrer) {
-	            opener.postMessage({ iframeCommand: "ttt2", iframeData: hello }, parentOrigin);
+	            opener.postMessage({ iframeCommand: "tokens", iframeData: hello }, parentOrigin);
 	        }
 		}, 2000);
 	</script>
