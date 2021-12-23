@@ -8,42 +8,16 @@
 	<title>Document</title>
 </head>
 <body onload=init()>
-	its iframe...
-	<div id="logger"></div>
 	<script>
 		let opener = window.opener;
-		let parentWindow;
 		let parentURL = document.referrer;
-
 		let pUrl = new URL(parentURL);
 		let parentOrigin = pUrl.origin;
-
-		function attachPostMessageListener(listener) {
-		    if (window.addEventListener) {
-		      window.addEventListener("message", listener, false);
-		    } else {
-		      // IE8
-		      window.attachEvent("onmessage", listener);
-		    }
-		}
-		let listener = (event) => {
-			if (event.origin != parentOrigin) return;
-			logger.insertAdjacentHTML('beforeend', `<div>child tab received postMessage from parent: ${JSON.stringify(event.data)}</div>`)
-			console.log("child tab received postMessage from parent:", event.data);
-		}
-		attachPostMessageListener(listener);
-
-		setInterval(()=>{
-
-			var hello = localStorage.getItem('dcTokens');
-
-			if (document.referrer) {
-	            opener.postMessage({ iframeCommand: "tokens", iframeData: hello }, parentOrigin);
-	        }
-		}, 2000);
-		
+		var tokens = localStorage.getItem('dcTokens');
 		function init() {
-			opener.postMessage({ iframeCommand: "connected", iframeData: 'connected' }, parentOrigin);
+			if (document.referrer) {
+				opener.postMessage({ evt: "tokens", data: { issuer: 'devcon', tokens: tokens }  }, parentOrigin);
+			}	
 		}
 	</script>
 </body>
